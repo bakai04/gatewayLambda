@@ -21,6 +21,8 @@ provider "aws" {
 }
 
 
+
+
 resource "random_pet" "lambda_bucket_name" {
   prefix = "learn-terraform-functions"
   length = 4
@@ -37,6 +39,7 @@ resource "aws_s3_bucket_acl" "bucket_acl" {
 
 data "archive_file" "lambda_hello_world" {
   type = "zip"
+
   source_dir  = "${path.module}/hello-world"
   output_path = "${path.module}/hello-world.zip"
 }
@@ -91,6 +94,7 @@ resource "aws_apigatewayv2_integration" "hello_world" {
 
 resource "aws_apigatewayv2_route" "hello_world" {
   api_id = aws_apigatewayv2_api.lambda.id
+
   route_key = "GET /hello"
   target    = "integrations/${aws_apigatewayv2_integration.hello_world.id}"
 }

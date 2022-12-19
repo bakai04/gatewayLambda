@@ -4,5 +4,5 @@ variable "aws_region" {
   description = "AWS region for all resources."
 
   type    = string
-  default = "ap-northeast-1"
+  default = "git clone https://github.com/hashicorp/learn-terraform-lambda-api-gateway.git"
 }
